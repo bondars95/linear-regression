@@ -1,13 +1,8 @@
 package com.unit;
 
-import org.jfree.data.function.LineFunction2D;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Predictor {
@@ -23,16 +18,24 @@ public class Predictor {
                 System.exit(1);
             }
             File file = new File("coefficients.txt");
+            if (!file.exists()) {
+                System.out.println(0);
+                return;
+            }
             Scanner scanner = new Scanner(file);
+            double a = 0;
+            double b = 0;
             while (scanner.hasNext()) {
                 try {
-                    System.out.println(scanner.nextDouble() + scanner.nextDouble() * x);
+                     a = scanner.nextDouble();
+                     b = scanner.nextDouble();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                     System.out.println("Parsing file error!");
                     System.exit(1);
                 }
             }
+            System.out.println(a + b * x);
         }
     }
 }
