@@ -1,5 +1,8 @@
 package com.unit;
 
+import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * A RegressionModel that fits a straight line to a data set
  */

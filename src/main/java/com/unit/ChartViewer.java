@@ -19,7 +19,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.ApplicationFrame;
 
 public class ChartViewer extends ApplicationFrame {
-    XYDataset inputData;
+    XYDataset ;
     private JFreeChart chart;
     private double maxX;
 
@@ -30,9 +30,8 @@ public class ChartViewer extends ApplicationFrame {
         maxX = dataSetEntries.stream().map(DatasetParser.DataSetEntry::getX).max(Double::compare).orElse(0.);
         dataSetEntries.forEach(res -> series.add(res.getX(), res.getY()));
         dataset.addSeries(series);
-        inputData = dataset;
         // Create the chart using the sample data
-        chart = createChart(inputData);
+        chart = createChart(dataset);
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
         setContentPane(chartPanel);

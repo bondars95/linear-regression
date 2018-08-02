@@ -1,5 +1,8 @@
 package com.unit;
 
+import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * Represents a regression model with one defined independent variable.
  * Provides operations to compute the regression coefficients and evaluate the resulting function at a certain point.
@@ -38,6 +41,17 @@ public abstract class RegressionModel {
      */
     public double[] getXValues() {
         return this.xValues;
+    }
+
+    public double getAccuracy() {
+        if (!computed)
+            throw new IllegalStateException("Model has not yet computed");
+        double accuracy = 0;
+        for (int i = 0; i < xValues.length; i++) {
+            // abs(predicted - actuals)
+            accuracy += Math.abs(evaluateAt(xValues[i]) - yValues[i]) / yValues[i];
+        }
+        return accuracy / xValues.length;
     }
 
     /**

@@ -34,15 +34,12 @@ public class Trainer {
         writer.append(coefficients[0] + " " + coefficients[1]);
         writer.close();
 
-        System.out.printf("Building regression line for: y = %.4f + %.4fx", coefficients[0], coefficients[1]);
-        display(args, res, coefficients);
+        System.out.printf("Building regression line for: y = %.4f + %.4fx\n", coefficients[0], coefficients[1]);
+        System.out.printf("MeanAbsolutePercentageError(MAPE): %.2f %%", model.getAccuracy() * 100);
+        display(res, coefficients);
     }
 
-    private static void display(
-            String[] args,
-            List<DatasetParser.DataSetEntry> res,
-            double[] coefficients
-    ) throws IOException {
+    private static void display(List<DatasetParser.DataSetEntry> res, double[] coefficients) throws IOException {
         ChartViewer chart = new ChartViewer(res);
         chart.pack();
         RefineryUtilities.centerFrameOnScreen(chart);
