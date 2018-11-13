@@ -19,7 +19,6 @@ import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.ApplicationFrame;
 
 public class ChartViewer extends ApplicationFrame {
-    XYDataset ;
     private JFreeChart chart;
     private double maxX;
 
